@@ -3,9 +3,12 @@
 ###A Collaborative Cookbook
 
 The CookcoLab app is a multi-user created collection of recipes.
+####Description
 ```
 A user can have more than one recipe.
-Each recipe will show a list of ingredients associated and documented instructions by the user.
+Each recipe will show the publish date, 
+	a list of ingredients associated, 
+	and documented instructions by the user.
 The author of a recipe may categorize the recipe by Breakfast, Lunch, Dinner, or Snack.
 The author may also tag the recipe - e.g. #quick #simple #bacon
 ```
@@ -34,4 +37,14 @@ tag
 ```
 id
 category
+```
+
+####Stretches
+```
+A user can "like" a user's recipe.
+A user can comment on a user's recipe.
+A user can search for a recipe by category/tag.
+A user can delete their recipe.
+A user can delete their profile 
+	- doing so removes their recipes and likes?
 ```
