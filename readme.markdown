@@ -23,6 +23,12 @@ The author may also tag the recipe - e.g. #quick #simple #bacon
 id
 name
 ```
+#####categories
+
+```
+id
+meal
+```
 #####recipes
 ```
 id
@@ -30,7 +36,6 @@ title
 published_date
 content
 user_id
-tag_id
 category_id
 ```
 #####tags
@@ -38,11 +43,14 @@ category_id
 id
 tag
 ```
-#####categories
+#####recipe_tags
 ```
-id
-category
+recipe_id
+tag_id
 ```
+
+
+
 
 ####Stretches
 ```
