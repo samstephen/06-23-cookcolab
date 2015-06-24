@@ -1,5 +1,5 @@
-require_relative "database_class_methods.rb"
-require_relative "database_instance_methods.rb"
+require_relative "../database_class_methods.rb"
+require_relative "../database_instance_methods.rb"
 
 class User
   extend DatabaseClassMethods
@@ -21,8 +21,8 @@ class User
   #
   # Returns a User object.
   def initialize(options={})
-    @id = user_options["id"]
-    @name = user_options["name"]
+    @id = options["id"]
+    @name = options["name"]
   end
   
 
