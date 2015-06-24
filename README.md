@@ -6,15 +6,14 @@ The CookcoLab app is a multi-user created collection of recipes.
 
 ####Description
 
-A user can have more than one recipe.
+A user can have multiple recipes; a recipe can have multiple tags and one category.
 
-#####Each recipe will show:
-* the publish date
+#####Each recipe's content will show:
 * a list of ingredients associated
-* documented instructions by the user
+* documented instructions of cooking the recipe by the user
 
-The author of a recipe may categorize the recipe by Breakfast, Lunch, Dinner, or Snack.
-
+A recipe will also have a "published date."
+The author may categorize the recipe by Breakfast, Lunch, Dinner, or Snack.
 The author may also tag the recipe - e.g. #quick #simple #bacon
 
 
@@ -52,14 +51,14 @@ tag_id
 
 
 ####First Model and Views
-#####should be able to 
+#####should be able to
 * create a user
 * create a recipe
 * create a category
 * create a tag
 * asign tags to a recipe
-* asign a category to a recipe
-* asign a recipe to a user
+* assign a category to a recipe
+* assign a recipe to a user
 * view all users
 * view all recipes
 * view recipes of a user
@@ -73,8 +72,9 @@ tag_id
 * create a recipe without a category
 * create a recipe without a tag
 * duplicate tags
-
+* delete a user with recipes, without also removing that user's recipe's recipe_tags
 
 ####Stretches
-A user can "like" a user's recipe.
-A user can comment on a user's recipe.
+* when a recipe is added, the publish date will automatically be assigned
+* A user can "like" a user's recipe.
+* A user can comment on a user's recipe.
