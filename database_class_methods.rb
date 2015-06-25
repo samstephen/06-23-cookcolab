@@ -26,6 +26,7 @@ module DatabaseClassMethods
   end
 
 
+
   # Add a new record to the database.
   #
   # options - hash
@@ -60,18 +61,21 @@ module DatabaseClassMethods
   end
 
 
+
   # Get a single row.
   #
   # record_id - The record's Integer ID.
   #
-  # Returns a an Array containing the Hash of the row.
+  # Returns a Class object.
   def find(record_id)
     # Figure out the table's name from the class we're calling the method on.
     table_name = self.to_s.pluralize.underscore
-    CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{record_id}")
+    results = CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{record_id}").first
+    self.new(results)
   end
   
-  
+
+
   # "Deletes" a row from a table
   #
   # record_id - The record's Integer ID.
@@ -83,11 +87,6 @@ module DatabaseClassMethods
   end
 
 end
-
-
-
-
-
 
 
 

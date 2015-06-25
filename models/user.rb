@@ -24,16 +24,6 @@ class User
     @id = options["id"]
     @name = options["name"]
   end
-  
-  # Find a customer name by id using find method from database_class_methods.rb
-  #
-  #customer_id - The customers table's Integer ID.
-  #
-  # Returns a Customer object
-  def self.find_as_object(user_id)
-    result = User.find(user_id).first
-    User.new(result)
-  end
 
 end
 

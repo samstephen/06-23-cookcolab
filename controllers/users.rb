@@ -48,7 +48,7 @@ end
 
 # Step 2: Let manager select a user
 get "/user/:x" do
-  @user_name = User.find_as_object(params["x"])
+  @user_name = User.find(params["x"]).first
   # Takes manager to user/user.id
   erb :"user/show"
 end
@@ -74,7 +74,7 @@ end
 # store params["name"] in @user_name.name
 # UPDATE column "name" row of id with what was entered in form. 
 get "/change_user_name" do
-  @user_name = User.find_as_object(params["x"].to_i)
+  @user_name = User.find(params["x"].to_i).first
   @user_name.name = params["name"]
   @user_name.update_cell("name", @user_name.name)
   # confirm user's name was updated in database
@@ -89,13 +89,13 @@ end
 
 # Step 2: confirm with user that deleting user will remove user from db
 get "/user/confirm_delete_user/:x" do
-  @user_name = User.find_as_object(params["x"])
+  @user_name = User.find(params["x"]).first
   erb :"user/confirm_delete_user"
 end
 
 # Step 3: remove the row with @user_name.id in id column
 get "/user/delete_user/:x" do
-  @user_name = User.find_as_object(params["x"])
+  @user_name = User.find(params["x"]).first
   User.delete(@user_name.id)
   # confirm user was deleted from db
   erb :"user/user_deleted"
