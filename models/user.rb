@@ -33,9 +33,8 @@ class User
   def self.find_as_object(user_id)
     @id = user_id
     result = User.find(user_id).first
-    User.new(result)
   end
-  
+
 
 end
 

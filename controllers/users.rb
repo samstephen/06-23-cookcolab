@@ -62,6 +62,29 @@ get "/user/:x" do
   erb :"user/show"
 end
 
+get "/user/change_name_form/:x" do
+  erb :"user/change_name_form"
+end
+
+get "/change_user_name" do
+  @user_name = User.find_as_object(params["x"].to_i)
+  @user_name.name = params["name"]
+  @user_name.update_cell("name", @user_name.name)
+  erb :"user/updated_user_name"
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
