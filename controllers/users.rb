@@ -8,11 +8,11 @@ get "/user_manager" do
 end
 
 
-# <li><a href="/add_user">Add a user</a></li>
-# <li><a href="/find_user">Find a user</a></li>
-# <li><a href="/update_user">Change user's name</a></li>
-# <li><a href="/delete_user">Delete a user</a></li>
-# <li><a href="/home">Return home</a></li>
+# <li><a href="/users/add_user_form">Add a user</a></li>
+# <li><a href="/users/find_user">Find a user</a></li>
+# <li><a href="/users/update_user">Change user's name</a></li>
+# <li><a href="/users/delete_user">Delete a user</a></li>
+# <li><a href="/users/home">Return home</a></li>
 
 
 
@@ -23,9 +23,9 @@ end
 # ---------------------------------------------------------------------
 
 # Step 1: Display a form into which the user will add new user info.
-get "/add_user" do
-  erb :"users/add_user_form"
-end
+#get "/add_user" do
+#  erb :"users/add_user_form"
+#end
 
 # Step 2: Take the information they submitted and use it to create new record.
 get "/save_user" do
@@ -41,3 +41,42 @@ get "/save_user" do
   @new_user = User.add({"name" => params["name"]})
     erb :"users/user_added"
 end
+
+
+
+# ---------------------------------------------------------------------
+# Find a user
+# ---------------------------------------------------------------------
+
+# Step 1: List all users.
+#
+# done in find_user.erb
+#
+# Each user in the ERB is linked to a route that displays a
+# form to collect their new name.
+
+# Step 2: Let manager select a user
+get "/user/:x" do
+  @user_name = User.find_as_object(params["x"])
+  # Takes manager to user/user.id
+  erb :"user/show"
+end
+
+
+
+
+# Links from user_manager to CRUD
+get "/users/:webpage" do
+  erb :"users/#{params["webpage"]}"
+end
+
+
+
+
+
+
+
+
+
+
+

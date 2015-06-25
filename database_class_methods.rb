@@ -86,6 +86,8 @@ module DatabaseClassMethods
   # Get a single row.
   #
   # record_id - The record's Integer ID.
+  # 
+  # TODO - RETURN AS OBJECT
   #
   # Returns an Array containing the Hash of the row.
   def find(record_id)
