@@ -10,7 +10,6 @@ end
 
 # <li><a href="/users/add_user_form">Add a user</a></li>
 # <li><a href="/users/find_user">Find a user</a></li>
-# <li><a href="/users/update_user">Change user's name</a></li>
 # <li><a href="/users/delete_user">Delete a user</a></li>
 # <li><a href="/users/home">Return home</a></li>
 
@@ -45,7 +44,8 @@ end
 
 
 # ---------------------------------------------------------------------
-# Find a user
+# Find a user / Display user's profile
+# Show user management options (update/destroy)
 # ---------------------------------------------------------------------
 
 # Step 1: List all users.
@@ -62,6 +62,11 @@ get "/user/:x" do
   erb :"user/show"
 end
 
+
+
+# From user's profile, change name
+# ---------------
+
 get "/user/change_name_form/:x" do
   erb :"user/change_name_form"
 end
@@ -75,10 +80,19 @@ end
 
 
 
+# From user's profile, delete profile
+# ---------------
+get "/user/confirm_delete_user/:x" do
+  @user_name = User.find_as_object(params["x"])
+  erb :"user/confirm_delete_user"
+end
 
 
-
-
+get "/user/delete_user/:x" do
+  @user_name = User.find_as_object(params["x"])
+  User.delete(@user_name.id)
+  erb :"user/user_deleted"
+end
 
 
 

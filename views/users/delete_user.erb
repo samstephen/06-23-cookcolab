@@ -1,7 +1,0 @@
-<h1>List of Users</h1>
-<h2>Select a user to delete</h2>
-<ul>
-  <% User.all.each do |user| %>
-      <li><a href="/user/<%= user.id %>"><%= user.name %></a></li>
-  <% end %>
-</ul>
