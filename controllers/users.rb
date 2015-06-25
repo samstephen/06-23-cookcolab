@@ -2,18 +2,9 @@
 # User Menu
 # ---------------------------------------------------------------------
 
-# Step 1: Display a form into which the user will add new user info.
 get "/user_manager" do
   erb :"users/user_manager"
 end
-
-
-# <li><a href="/users/add_user_form">Add a user</a></li>
-# <li><a href="/users/find_user">Find a user</a></li>
-# <li><a href="/users/delete_user">Delete a user</a></li>
-# <li><a href="/users/home">Return home</a></li>
-
-
 
 
 
@@ -22,9 +13,11 @@ end
 # ---------------------------------------------------------------------
 
 # Step 1: Display a form into which the user will add new user info.
-#get "/add_user" do
-#  erb :"users/add_user_form"
-#end
+
+#  * See bottom to see how link works *
+#     get "/users/add_user_form" do
+#       erb :"users/add_user_form"
+#     end
 
 # Step 2: Take the information they submitted and use it to create new record.
 get "/save_user" do
@@ -44,16 +37,14 @@ end
 
 
 # ---------------------------------------------------------------------
-# Find a user / Display user's profile
-# Show user management options (update/destroy)
+# Find a user
 # ---------------------------------------------------------------------
 
 # Step 1: List all users.
-#
+
 # done in find_user.erb
-#
-# Each user in the ERB is linked to a route that displays a
-# form to collect their new name.
+
+# Each user in the ERB is linked to a route that displays a their profile.
 
 # Step 2: Let manager select a user
 get "/user/:x" do
@@ -64,55 +55,60 @@ end
 
 
 
-# From user's profile, change name
+# ---------------------------------------------------------------------
+# User's profile
+# ---------------------------------------------------------------------
+
+# CHANGE A USER'S NAME
 # ---------------
 
+# Step 1: From user's profile (show.erb), select "update"
+
+# Step 2: provide form for user to type a new name for user.
 get "/user/change_name_form/:x" do
   erb :"user/change_name_form"
 end
 
+# Step 3: params["x"] is the id of the user being modified,
+# from the users table convert row of "id" to an object
+# store params["name"] in @user_name.name
+# UPDATE column "name" row of id with what was entered in form. 
 get "/change_user_name" do
   @user_name = User.find_as_object(params["x"].to_i)
   @user_name.name = params["name"]
   @user_name.update_cell("name", @user_name.name)
+  # confirm user's name was updated in database
   erb :"user/updated_user_name"
 end
 
 
-
-# From user's profile, delete profile
+# DELETE A ROW FROM USERS TABLE
 # ---------------
+
+# Step 1: From user's profile, select "delete"
+
+# Step 2: confirm with user that deleting user will remove user from db
 get "/user/confirm_delete_user/:x" do
   @user_name = User.find_as_object(params["x"])
   erb :"user/confirm_delete_user"
 end
 
-
+# Step 3: remove the row with @user_name.id in id column
 get "/user/delete_user/:x" do
   @user_name = User.find_as_object(params["x"])
   User.delete(@user_name.id)
+  # confirm user was deleted from db
   erb :"user/user_deleted"
 end
 
 
 
-
-
-
-
-
-
+# ---------------------------------------------------------------------
 # Links from user_manager to CRUD
+# ---------------------------------------------------------------------
 get "/users/:webpage" do
   erb :"users/#{params["webpage"]}"
 end
-
-
-
-
-
-
-
 
 
 

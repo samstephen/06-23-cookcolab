@@ -1,4 +1,6 @@
+<!-- show of user's profile, can change user's name and delete user from options given in profile -->
+
 <h1><%= @user_name.name %>'s profile.</h1>
-<p>Would you like to change <a href="/user/change_name_form/<%= @user_name.id %>"><%= @user_name.name %>'s</a> name?</p>
-<p>Delete <a href="/user/confirm_delete_user/<%= @user_name.id %>"><%= @user_name.name %></a> from database?</p>
+<p>Would you like to <a href="/user/change_name_form/<%= @user_name.id %>">update</a> <%= @user_name.name %>'s name?</p>
+<p>Would you like to <a href="/user/confirm_delete_user/<%= @user_name.id %>">delete</a> <%= @user_name.name %> from database?</p>
 

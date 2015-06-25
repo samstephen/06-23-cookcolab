@@ -35,15 +35,7 @@ class User
     result = User.find(user_id).first
   end
 
-
-
 end
-
-
-
-
-
-
 
 
 
