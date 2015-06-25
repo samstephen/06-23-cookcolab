@@ -6,6 +6,7 @@ require "active_support/inflector"
 
 module DatabaseClassMethods
 
+
   # Get all of the rows for a table and convert hashes to objects
   #
   # Returns an Array containing Class objects.
@@ -59,52 +60,18 @@ module DatabaseClassMethods
   end
 
 
-
-
-#  def save(options)
-#    table_name = self.to_s.pluralize.underscore
-#
-#    column_name = options.keys
-#    expr = options.values
-#    individual_expr = []
-#
-#    expr.each do |value|
-#      if expr.is_a?(String)
-#        individual_expr << "'#{value}'"
-#      else
-#        individual_expr << value
-#      end
-#    end
-#
-#    CONNECTION.execute("UPDATE #{table_name} SET #{column_name} = #{expr} WHERE id = #{@id};")
-#  end
-
-
-
-
-
   # Get a single row.
   #
   # record_id - The record's Integer ID.
-  # 
-  # TODO - RETURN AS OBJECT
   #
-  # Returns an Array containing the Hash of the row.
+  # Returns a an Array containing the Hash of the row.
   def find(record_id)
     # Figure out the table's name from the class we're calling the method on.
     table_name = self.to_s.pluralize.underscore
-    results = CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{record_id}")
-    results_as_objects = []
-
-    results.each do |results_hash|
-      results_as_objects << self.new(results_hash)
-    end
-
-    return results_as_objects
+    CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{record_id}")
   end
-  # => [<USER:1243125125 id=>1 name=> sam]
-
-
+  
+  
   # "Deletes" a row from a table
   #
   # record_id - The record's Integer ID.
@@ -116,17 +83,6 @@ module DatabaseClassMethods
   end
 
 end
-
-
-
-
-# TODO
-  # - adding records to a table - INSERT
-  # def add(table_name)
-  #   CONNECTION.execute("INSERT INTO #{table_name} (name, age) VALUES ('Sumeet', 500)")
-  # end
-
-  # - save - UPDATE customers SET name = 'Sumeet'
 
 
 
