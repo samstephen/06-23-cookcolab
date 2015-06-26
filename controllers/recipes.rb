@@ -1,37 +1,20 @@
 # ---------------------------------------------------------------------
-# Users Menu
+# Recipes Menu
 # ---------------------------------------------------------------------
 
-get "/users_manager" do
-  erb :"users/users_manager"
+get "/recipes_manager" do
+  erb :"recipes/recipes_manager"
 end
 
 
 
 # ---------------------------------------------------------------------
-# Add a user
+# Add a recipe
 # ---------------------------------------------------------------------
 
-# Step 1: Display a form into which the user will add new user info.
-
-#  * See bottom to see how link works *
-#     get "/users/add_user_form" do
-#       erb :"users/add_user_form"
-#     end
-
-# Step 2: Take the information they submitted and use it to create new record.
-get "/save_user" do
-  # Since the form's action was "/save_user", it sent its values here.
-  #
-  # Sinatra stores them for us in `params`, which is a hash. Like this:
-  #
-  # {"name" => "Sam Stephen"}
-  
-  # So using `params`, we can run our class/instance methods as needed
-  # to create a user record.
-
-  @new_user = User.add({"name" => params["name"]})
-    erb :"users/user_added"
+get "/save_recipe" do
+  @new_recipe = Recipe.add({"name" => params["name"]})
+    erb :"recipes/recipe_added"
 end
 
 

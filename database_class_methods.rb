@@ -7,25 +7,6 @@ require "active_support/inflector"
 module DatabaseClassMethods
 
 
-  # Get all of the rows for a table and convert hashes to objects
-  #
-  # Returns an Array containing Class objects.
-  def all
-    # Figure out the table's name from the class we're calling the method on.
-    table_name = self.to_s.pluralize.underscore
-
-    results = CONNECTION.execute("SELECT * FROM #{table_name}")
-
-    results_as_objects = []
-
-    results.each do |results_hash|
-      results_as_objects << self.new(results_hash)
-    end
-
-    return results_as_objects
-  end
-
-
 
   # Add a new record to the database.
   #
@@ -53,11 +34,30 @@ module DatabaseClassMethods
 
     CONNECTION.execute("INSERT INTO #{table_name} (#{column_names_for_sql}) VALUES (#{individual_values_for_sql});")
 
-
     id = CONNECTION.last_insert_row_id
     options["id"] = id
 
     self.new(options)
+  end
+
+
+
+  # Get all of the rows for a table and convert hashes to objects
+  #
+  # Returns an Array containing Class objects.
+  def all
+    # Figure out the table's name from the class we're calling the method on.
+    table_name = self.to_s.pluralize.underscore
+
+    results = CONNECTION.execute("SELECT * FROM #{table_name}")
+
+    results_as_objects = []
+
+    results.each do |results_hash|
+      results_as_objects << self.new(results_hash)
+    end
+
+    return results_as_objects
   end
 
 
@@ -70,9 +70,7 @@ module DatabaseClassMethods
   def find(record_id)
     # Figure out the table's name from the class we're calling the method on.
     table_name = self.to_s.pluralize.underscore
-    results = CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{record_id}")
-    results_hash = results.first
-    self.new(results_hash)
+    self.new(CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{record_id}").first)
   end
   
 
@@ -86,7 +84,7 @@ module DatabaseClassMethods
     table_name = self.to_s.pluralize.underscore
     CONNECTION.execute("DELETE FROM #{table_name} WHERE id = #{record_id}")
   end
-
+  
 end
 
 
