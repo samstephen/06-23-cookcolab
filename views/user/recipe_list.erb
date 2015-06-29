@@ -2,13 +2,15 @@
 
 <ul>
   <% @user_recipes.each do |recipe| %>
-      <li><a href="/recipe/<%= recipe.id %>"><%= recipe.title %></a></li>
+  
+	  <li><a href="/recipe/<%= recipe.id %>"><%= recipe.title %></a></li>
+	 
   <% end %>
 </ul>
 
 
 <ul>
-	<li><a href="/user/<%= @user.id %>">Return to <%= @user.name %>'s</a> profile?</li>
+	<li>Return to <a href="/user/<%= @user.id %>"><%= @user.name %>'s</a> profile?</li>
 	<li>Return to <a href="/users_manager">User Manager?</a></li>
 	<li>Return to <a href="/recipes_manager">Recipe Manager?</a></li>
 </ul>

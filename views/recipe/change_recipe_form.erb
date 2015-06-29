@@ -7,24 +7,28 @@
   <br>
   <input value="<%= @recipe.title %>" type="text" name="title" placeholder="New title: ">
   <br><br>
+  
   Published Date:
   <br>
   <input value="<%= @recipe.published_date %>" type="text" name="published_date" placeholder="New published_date: ">
-  
   <br><br>
+  
   Recipe's Instructions:
   <br>
   <TEXTAREA NAME="content" ROWS="3" COLS="25">
   <%= @recipe.content %>
   </TEXTAREA>
   <br><br>
+  
   Author's ID:
   <br>
   <input value="<%= @recipe.user_id %>" type="number" name="user_id" placeholder="New user_id: ">
   <br><br>
+  
   Type of Meal:
   <br>
   <input value="<%= @recipe.meal_id %>" type="number" name="meal_id" placeholder="New meal_id: ">
+  <br><br>
   
   <input type="submit">
 </form>

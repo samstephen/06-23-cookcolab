@@ -37,6 +37,24 @@ class Recipe
     Meal.find(@meal_id)
   end
 
+
+  # Get all of the rows for a table and convert hashes to objects
+  #
+  # Returns an Array containing Recipe objects.
+  def self.user_recipes(user_id)
+    
+    results = CONNECTION.execute("SELECT * FROM recipes WHERE user_id = #{user_id}")
+
+    results_as_objects = []
+
+    results.each do |results_hash|
+      results_as_objects << self.new(results_hash)
+    end
+
+    return results_as_objects
+  end
+
+
 end
 
 

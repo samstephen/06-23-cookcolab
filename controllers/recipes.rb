@@ -42,7 +42,6 @@ end
 
 
 
-
 # CHANGE A USER'S NAME
 # ---------------
 
@@ -63,13 +62,12 @@ post "/change_recipe" do
   @recipe = Recipe.new({"id" => params["x"].to_i, "title" => params["title"], "published_date" => params["published_date"],
     "content" => params["content"], "user_id" => params["user_id"].to_i, "meal_id" => params["meal_id"].to_i})
   @recipe.save
+
+  
+  
   # confirm user's name was updated in database
   erb :"recipe/updated_recipe"
 end
-
-
-
-
 
 
 

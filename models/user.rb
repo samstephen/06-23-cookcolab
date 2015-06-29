@@ -24,11 +24,6 @@ class User
     @name = options["name"]
   end
 
-  def user_recipes
-    Recipe.find(@user_id)
-  end
-  
-
 end
 
 
