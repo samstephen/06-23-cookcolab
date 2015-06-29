@@ -5,8 +5,7 @@ class User
   extend DatabaseClassMethods
   include DatabaseInstanceMethods
   
-  attr_reader :id
-  attr_accessor :name
+  attr_accessor :id, :name
   
   # Initializes a new user object.
   #

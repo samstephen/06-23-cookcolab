@@ -1,6 +1,8 @@
 <!-- message to user to confirm user was added -->
 
 <h1>User named <%= @new_user.name %> added!</h1>
-
-<a href="/home">Return to main menu?</a>
-
+<ul>
+	<li><a href="/users/add_user_form">Add another?</a></li>
+	<li><a href="/users_manager">Return to User Manager?</a></li>
+	<li><a href="/home">Return to main menu?</a></li>
+</ul>

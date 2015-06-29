@@ -17,6 +17,7 @@ require_relative 'models/recipe_tag.rb'
 require_relative "controllers/main.rb"
 require_relative "controllers/users.rb"
 require_relative 'controllers/recipes.rb'
+require_relative 'controllers/tags.rb'
 
 
 # create rows for categories

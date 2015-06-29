@@ -1,6 +1,6 @@
 <!-- message to user to confirm user's name was updated -->
 
-<h1><%= @user_name.name %> updated!</h1>
-
-<a href="/home">Return to main menu?</a>
+<h1><%= @user.name %> updated!</h1>
+<p><a href="/home">GO HOME!</a></p>
+<p><a href="/user/<%= @user.id %>">Return to <%= @user.name %>'s profile?</a></p>
 
