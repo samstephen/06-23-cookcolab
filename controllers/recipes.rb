@@ -58,7 +58,7 @@ end
 # from the users table convert row of "id" to an object
 # store params["name"] in @user_name.name
 # UPDATE column "name" row of id with what was entered in form. 
-get "/change_recipe" do
+post "/change_recipe" do
   
   @recipe = Recipe.new({"id" => params["x"].to_i, "title" => params["title"], "published_date" => params["published_date"],
     "content" => params["content"], "user_id" => params["user_id"].to_i, "meal_id" => params["meal_id"].to_i})

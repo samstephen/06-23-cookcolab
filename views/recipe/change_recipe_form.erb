@@ -1,6 +1,6 @@
 <!-- form to provide area to type new name for user, input stored in name="name" and used in: get "/change_user_name" do -->
 <h1>What would you like to change about <%= @recipe.title %>?</h1>
-<form action="/change_recipe">
+<form method="post" action="/change_recipe">
   <input type="hidden" name="x" value="<%= @recipe.id %>">
   
   Recipe's Title:
