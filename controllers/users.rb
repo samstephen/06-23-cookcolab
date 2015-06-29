@@ -54,6 +54,13 @@ get "/user/:id" do
 end
 
 
+get "/user/recipe_list/:id" do
+  @user = User.find(params[:id])
+  @user_id = @user.id
+  @user_recipes = []
+  @user_recipes << Recipe.find(@user_id)
+  erb :"user/recipe_list"
+end
 
 # ---------------------------------------------------------------------
 # User's profile
