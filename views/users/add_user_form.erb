@@ -1,7 +1,12 @@
 <!-- form will go to /save_user and take input as params["name"] -->
-
+<h1>
+	Add A User
+</h1>
 <form action="/save_user">
   <input type="text" placeholder="Enter name!" name="name" value="<%= params["name"] %>">
   <input type="submit">
 </form>
 
+<p>
+	Return to <a href="/users_manager">User Manager?</a>
+</p>

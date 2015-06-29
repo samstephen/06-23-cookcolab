@@ -1,0 +1,25 @@
+<!-- show of user's profile, can change user's name and delete user from options given in profile -->
+
+<h1>
+	<%= @recipe.title %>
+</h1>
+<p>
+	The author of this recipe is <%= @recipe.author %>.
+</p>
+
+<p>
+	<%= @recipe.content %>
+</p>
+
+<p>
+	Would you like to <a href="/recipe/change_recipe_form/<%= @recipe.id %>">update</a> <%= @recipe.title %>?
+</p>
+
+<p>
+	Would you like to <a href="/recipe/confirm_delete_recipe/<%= @recipe.id %>">delete</a> <%= @recipe.title %> from database?
+</p>
+
+<p>
+	Return to <a href="/recipes_manager">Recipe Manager?</a>
+</p>
+

@@ -28,6 +28,12 @@ class Recipe
     @user_id = options["user_id"]
     @meal_id = options["meal_id"]
   end
+  
+  def author
+    user = User.find(@user_id)
+    return user.name
+  end
+  
 
 end
 

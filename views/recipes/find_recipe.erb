@@ -1,13 +1,13 @@
-<h1>List of Users</h1>
+<h1>List of Recipes</h1>
 
 <ul>
-  <% User.all.each do |user| %>
-      <li><a href="/user/<%= user.id %>"><%= user.name %></a></li>
+  <% Recipe.all.each do |recipe| %>
+      <li><a href="/recipe/<%= recipe.id %>"><%= recipe.title %></a></li>
   <% end %>
 </ul>
 
 <p>
-	Return to <a href="/users_manager">User Manager?</a>
+	Return to <a href="/recipes_manager">Recipe Manager?</a>
 </p>
 
 
