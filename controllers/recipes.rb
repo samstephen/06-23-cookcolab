@@ -35,6 +35,7 @@ end
 get "/recipe/:id" do
   @recipe = Recipe.find(params[:id])
   @user = @recipe.author
+  @meal = @recipe.meal
   # Takes manager to user/user.id
   erb :"recipe/show"
 end

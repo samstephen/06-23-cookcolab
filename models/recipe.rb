@@ -33,6 +33,9 @@ class Recipe
     User.find(@user_id)
   end
   
+  def meal
+    Meal.find(@meal_id)
+  end
 
 end
 
