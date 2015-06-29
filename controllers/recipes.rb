@@ -12,11 +12,29 @@ end
 # Add a recipe
 # ---------------------------------------------------------------------
 
-get "/save_recipe" do
+post "/save_recipe" do
   @new_recipe = Recipe.add({"title" => params["title"], "published_date" => params["published_date"],
     "content" => params["content"], "user_id" => params["user_id"], "meal_id" => params["meal_id"]})
+    
+  @new_tag = []
+  @new_tags_arr = params["tag"].split(",")
   
-    erb :"recipes/recipe_added"
+  @new_tags_arr.each do |tag|
+    @new_tag << Tag.add( { "tag" => "#{tag}" } )
+  end
+  
+  @tag_arr = []
+  @new_tag.each do |tag_obj|
+    @tag_arr << tag_obj.id
+  end
+  
+  @new_recipe.id
+  
+  @tag_arr.each do | tag_id |
+    RecipeTag.add( { "recipe_id" => @new_recipe.id, "tag_id" => "#{tag_id}" } )
+  end
+  
+  erb :"recipes/recipe_added"
 end
 
 
@@ -36,6 +54,7 @@ get "/recipe/:id" do
   @recipe = Recipe.find(params[:id])
   @user = @recipe.author
   @meal = @recipe.meal
+  
   # Takes manager to user/user.id
   erb :"recipe/show"
 end
@@ -62,8 +81,16 @@ post "/change_recipe" do
   @recipe = Recipe.new({"id" => params["x"].to_i, "title" => params["title"], "published_date" => params["published_date"],
     "content" => params["content"], "user_id" => params["user_id"].to_i, "meal_id" => params["meal_id"].to_i})
   @recipe.save
-
   
+  @new_tags_arr = params["tag"].split(",")
+  @new_tags_arr.each do |tag|
+    Tag.add( { "tag" => "#{tag}" } )
+  end
+  
+  @new_recipe_tags_arr = Tag.all
+  @new_recipe_tags_arr.each do | |
+    RecipeTag.add( { "recipe_id" => "#{recipe_id}", "tag_id" => "#{tag_id}" } )
+  end
   
   # confirm user's name was updated in database
   erb :"recipe/updated_recipe"

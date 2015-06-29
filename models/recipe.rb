@@ -54,9 +54,7 @@ class Recipe
     return results_as_objects
   end
 
-
 end
-
 
 
 
