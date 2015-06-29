@@ -30,8 +30,7 @@ class Recipe
   end
   
   def author
-    user = User.find(@user_id)
-    return user.name
+    User.find(@user_id)
   end
   
 
