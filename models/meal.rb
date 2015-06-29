@@ -1,7 +1,7 @@
 require_relative "../database_class_methods.rb"
 require_relative "../database_instance_methods.rb"
 
-class Category
+class Meal
   extend DatabaseClassMethods
   include DatabaseInstanceMethods
   
@@ -16,10 +16,10 @@ class Category
   #
   # Examples:
   #
-  #   Category.new({ "id" => 1, "meal" => "Breakfast" })
-  #   Category.new({ "id" => 2, "meal" => "Lunch" })
-  #   Category.new({ "id" => 3, "meal" => "Dinner" })
-  #   Category.new({ "id" => 4, "meal" => "Snack" })
+  #   Meal.new({ "id" => 1, "meal" => "Breakfast" })
+  #   Meal.new({ "id" => 2, "meal" => "Lunch" })
+  #   Meal.new({ "id" => 3, "meal" => "Dinner" })
+  #   Meal.new({ "id" => 4, "meal" => "Snack" })
   #
   # Returns a Category object.
   def initialize(options={})
