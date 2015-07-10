@@ -2,5 +2,5 @@
 # Main Menu
 # ---------------------------------------------------------------------
 get "/home" do
-  erb :"main/index"
+  erb :"main/homepage"
 end

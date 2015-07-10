@@ -1,3 +1,16 @@
 body {
 	background: grey;
 }
+
+nav {
+    padding: 20px;
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+
+nav ul li {
+	display: inline-block;
+	list-style-type: none;
+}
+
